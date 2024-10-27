@@ -4,11 +4,11 @@ def solution(babbling):
     answer = 0
     word = ['aya', 'ye', 'woo', 'ma']
 
-    for i in babbling:  # babblinggÀÇ ´Ü¾î ÇÏ³ª¾¿ È®ÀÎ.
+    for i in babbling:  # babblinggì˜ ë‹¨ì–´ í•˜ë‚˜ì”© í™•ì¸.
         for j in word:
-            if j * 2 not in i:  # ¿¬¼ÓÀ¸·Î ¾È ³ª¿Â´Ù¸é °ø¹éÀ¸·Î º¯È¯.
+            if j * 2 not in i:  # ì—°ì†ìœ¼ë¡œ ì•ˆ ë‚˜ì˜¨ë‹¤ë©´ ê³µë°±ìœ¼ë¡œ ë³€í™˜.
                 i = i.replace(j, ' ')
-        if i.isspace(): # °ø¹éÀ¸·Î¸¸ ÀÌ·ç¾îÁ® ÀÖÀ¸¸é answer 1 Áõ°¡.
+        if i.isspace(): # ê³µë°±ìœ¼ë¡œë§Œ ì´ë£¨ì–´ì ¸ ìˆìœ¼ë©´ answer 1 ì¦ê°€.
             answer += 1
 
     return answer
