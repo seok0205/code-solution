@@ -37,3 +37,19 @@ for i in id_list:   # 위에서 완성된 딕셔너리 통해 메시지 수신 �
 print(reported_cnt_dic)
 print(user_dic)
 print(result)
+
+'''
+다른 유저의 풀이
+
+answer = [0] * len(id_list)
+reported = {x: 0 for x in id_list}
+
+for r in set(report):
+    a,b = r.split()
+    reported[b] += 1
+
+for r in set(report):
+    a,b = r.split()
+    if reported[b] >= k:
+        answer[id_list.index(a)] += 1
+'''
