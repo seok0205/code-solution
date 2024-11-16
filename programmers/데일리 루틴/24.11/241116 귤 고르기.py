@@ -46,13 +46,21 @@ for i in tangerine: # 리스트에 등장 할 때마다 t딕셔너리의 키값 
     else:   # 새로 등장한 수면 키값 1로 등록.
         t[i] = 1
 
-# 핵심. t에 저장된 내용을 기존 t의 key 값이 아닌 value의 값들을 기준으로 내림차순으로 정렬.(높은 수를 먼저 k값에서 빼야하므로) 
+'''
+핵심. t에 저장된 내용을 기존 t의 value의 값들을 기준으로 내림차순으로 정렬.(높은 수를 먼저 k값에서 빼야하므로)
+
+lambda식을 활용한 딕셔너리 정렬 :
+sorted(t.keys(). key=lambda x: x) # key 출력(list).
+sorted(t.values(), key=lambda x: x) # value 출력(list).
+sorted(t, key=lambda x: t[x]) # 딕셔너리 t의 key를 x에 넣어 t[x], value로 정렬해서 key 출력(list).
+sorted(t.items(), key=lambda x: x[0]) # 딕셔너리 key, value 쌍을 x에 넣어 정렬해서 출력 x[0]은 key, x[1]은 value(tuple in list).
+'''
 t = dict(sorted(t.items(), key=lambda x: x[1], reverse=True))   # 참고 부분!
 
 for i in t: # 정렬된 딕셔너리 순서대로
     if k <= 0:  # k가 0보다 작거나 같을 때까지
         break
-    k -= t[i]   # k가 0보다 아직 크면 차례로 t의 key값(귤의 개수)를 뺌.
+    k -= t[i]   # k가 0보다 아직 크면 차례로 t의 value값(귤의 개수)을 뺌.
     result += 1 # 반복 횟수 누적(즉, 상자에 포함된 크기별 종류가 1 증가.)
 
 print(result)   # result값 출력.
