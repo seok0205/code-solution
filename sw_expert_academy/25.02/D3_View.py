@@ -28,3 +28,36 @@ print(result)
 건물의 조망권을 얻으려면 주변 건물이 모두 본건물보다 낮아야함. 그러면 양옆 합쳐서 4칸의 건물이 본 건물보다 낮아야하고,
 그 4개의 건물중 가장 높은 건물과의 차이가 본 건물의 조망권이 확보되는 층수!
 '''
+
+for tc in range(1, 11):
+    N = int(input())
+    height = list(map(int, input().split()))
+
+    result = 0
+
+    def Bubblesort(arr, N):
+        for i in range(N-1, 0, -1):
+            for j in range(i):
+                if arr[j] > arr[j+1]:
+                    arr[j], arr[j+1] = arr[j+1], arr[j]
+
+    for i in range(2, N-2):
+        hei_lst = list()
+        for j in range(i-2, i+3):
+            if height[j] < height[i]:
+                hei_lst.append(height[i] - height[j])
+            elif  i == j:
+                hei_lst.append(height[i])
+            else:
+                break
+
+        if len(hei_lst) == 5:
+            Bubblesort(hei_lst, len(hei_lst))
+            result += hei_lst[0]
+
+    print(f'#{tc} {result}')
+    
+'''
+버블 정렬을 활용한 풀이
+
+'''
