@@ -9,6 +9,7 @@
 
 |날짜|문제|플랫폼|
 |---|---|---|
+|25.02.07|[D3 Sum](./sw_expert_academy/25.02/D3_1209_Sum.py)|SWEA|
 |25.02.06|[D1 최대 최소의 간격](./sw_expert_academy/25.02/D1_11092.py)|SWEA|
 |25.02.06|[D3 Flatten](./sw_expert_academy/25.02/D3_Flatten.py)|SWEA|
 |25.02.05|[D3 View](./sw_expert_academy/25.02/D3_View.py)|SWEA|
