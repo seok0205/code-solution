@@ -43,13 +43,13 @@ for tc in range(1, 11):
                             break
                         
                 elif dir == 'right':    # 방향이 오른쪽이면
-                    j += dj[num]        # j가 1 증가. 오른쪽으로 전진
+                    j += dj[0]        # j가 1 증가. 오른쪽으로 전진
                     x2, y2 = i + 1, j    # 밑 칸 임시좌표
                     if matrix[x2][y2]:      # 밑의 칸이 1이라면 방향 down으로 변경
                         dir = 'down'
                         
                 elif dir == 'left':     # 왼쪽이면
-                    j += dj[num]        # j가 -1 감소. 왼쪽 전진
+                    j += dj[1]        # j가 -1 감소. 왼쪽 전진
                     x3, y3 = i + 1, j    # 밑 칸 임시좌표
                     if matrix[x3][y3]:      # 오른쪽일 때와 조건 같음
                         dir = 'down'
