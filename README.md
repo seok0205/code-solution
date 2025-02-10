@@ -9,6 +9,9 @@
 
 |날짜|문제|플랫폼|복습|
 |---|---|---|---|
+|25.02.10|[D2 특별한 정렬](./sw_expert_academy/25.02/10_D2_16311.py)|SWEA||
+|25.02.10|[D2 이진 탐색](./sw_expert_academy/25.02/10_D2_16312.py)|SWEA||
+|25.02.10|[D2 달팽이 숫자](./sw_expert_academy/25.02/10_D2_1954.py)|SWEA||
 |25.02.09|[D2 파리 퇴치 3](./sw_expert_academy/25.02/D2_12712.py)|SWEA|필요|
 |25.02.08|[D2 파리 퇴치](./sw_expert_academy/25.02/D2_2001.py)|SWEA||
 |25.02.08|[D2 숫자를 정렬하자](./sw_expert_academy/25.02/D2_1966.py)|SWEA||
