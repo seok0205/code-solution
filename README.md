@@ -9,6 +9,7 @@
 
 |날짜|문제|플랫폼|복습|
 |---|---|---|---|
+|25.02.11|[D2 회문 1](./sw_expert_academy/25.02/11_D3_1215.py)|SWEA||
 |25.02.11|[D2 글자수](./sw_expert_academy/25.02/11_D2_16370.py)|SWEA||
 |25.02.11|[D2 회문](./sw_expert_academy/25.02/11_D2_16348.py)|SWEA||
 |25.02.10|[D4 Ladder 1](./sw_expert_academy/25.02/10_D4_1210.py)|SWEA||
