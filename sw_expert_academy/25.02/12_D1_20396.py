@@ -11,9 +11,6 @@ N개의 돌의 배열
 i, j
 '''
 
-import sys
-sys.stdin = open('seok.txt', 'r')
-
 T = int(input())
 
 for tc in range(1, T+1):
