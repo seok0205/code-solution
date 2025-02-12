@@ -27,3 +27,26 @@ for tc in range(1, T+1):
                 result = result - len(B) + 1        # 그리고 B를 치면 B길이 -1만큼 타이핑 횟수 줄인다는 뜻
 
     print(f'#{tc} {result}')
+
+'''
+패턴 매칭 활용 풀이
+
+T = int(input())
+
+for tc in range(1, T + 1):
+    A, B = input().split()
+    i = 0
+    N = len(A)
+    M = len(B)
+    pattern_count = N
+    while i + M - 1 < N:
+        if A[i] == B[0]:
+            if A[i: i + M] == B:
+                i = i + M
+                pattern_count -= (M - 1)
+            else :
+                i += 1
+        else:
+            i += 1
+    print(f"#{tc} {pattern_count}")
+'''
