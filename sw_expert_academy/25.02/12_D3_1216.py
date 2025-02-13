@@ -42,4 +42,4 @@ for tc in range(1, 11):
     
     result = length_func(matrix)
     
-    print(f'#{tc} {result}')
+    print(f'#{T} {result}')
