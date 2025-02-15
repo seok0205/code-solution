@@ -11,9 +11,6 @@ N이 만약 홀수면, 교대로 놓을 때 먼저 놓는 쪽에 한 장이 더 
 N개의 카드 이름 공백 구분 입력(카드 이름은 알파벳 대문자 및 '-'만으로 이루어짐. 길이 80이하)
 '''
 
-import sys
-sys.stdin = open('tc.txt', 'r')
-
 
 def shuffle(a, b):          # 셔플 함수
     shuffled_lst = []           # 셔플된 결과 담을 리스트
