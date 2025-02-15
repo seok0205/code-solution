@@ -53,21 +53,21 @@ for tc in range(1, T+1):
     lst_two = dfs_find_same_root(node2, reverse_edge, V)    # 두번째 노드가 거슬러 올라갈 때 방문하는 순서 정보 리스트
     
     compare = []        # 공통 조상노드 구할 때 사용할 리스트
-    for idx in range(V+1):     # 
-        if lst_one[idx] and lst_two[idx]:
-            compare.append((idx, lst_one[idx] + lst_two[idx]))
-    
-    root_node = compare[0][0]
+    for idx in range(V+1):                                      # 방문 순서를 담은 반환된 리스트를 순회하면서
+        if lst_one[idx] and lst_two[idx]:                       # 만약 두 리스트의 같은 인덱스에 값이 존재한다면, 공통된 조상노드 가지고 있다는 것
+            compare.append((idx, lst_one[idx] + lst_two[idx]))  # compare리스트에 해당 노드번호(idx)와 방문순서의 합을 구함
+                                                                # 합을 구하는 이유는 방문 순서의 합이 가장 작다면 겹치는 조상노드 중 가장 먼저 방문했다는 의미
+    root_node = compare[0][0]   # root_node : 공통된 조상노드, num : 방문순서 최솟값(compare에 먼저 담긴 값들로 초기화)
     num = compare[0][1]
-    for i, j in compare:
-        if j < num:
-            num = j
-            root_node = i
+    for i, j in compare:        # compare에 담긴 tuple의 idx, 방문순서의 합을 각각 i, j로 지정하고 순회
+        if j < num:             # 만약 num보다 j가 작으면 더 일찍 방문한 조상노드라는 의미
+            num = j             # num을 방문순서 합으로
+            root_node = i       # root_node(조상노드)를 idx로 교체
 
-    tree_size = 0
-    lst_three = dfs_find_same_root(root_node, edge, V)
+    tree_size = 0       # tree_size : 조상노드가 정점인 서브트리의 크기
+    lst_three = dfs_find_same_root(root_node, edge, V)      # root_node가 정점인 트리의 방문 정보 리스트 반환
     for i in lst_three:
-        if i:
-            tree_size += 1
+        if i:                   # 방문 정보 리스트의 값이 0이 아니면 서브트리에 해당된다는 것(방문했기 때문에)
+            tree_size += 1      # 트리 크기 1증가
     
-    print(f'#{tc} {root_node} {tree_size}')
+    print(f'#{tc} {root_node} {tree_size}')     # 결과값 출력
