@@ -11,9 +11,6 @@ S4 1244 스위치 켜고 끄기
 구간에 속한 스위치는 항상 홀수. 좌우 대칭일때 값이 같아야 바꿈. 다르면 거기서 멈춤
 '''
 
-import sys
-sys.stdin = open('tc.txt', 'r')
-
 S = int(input())
 switch_status = list(map(int, input().split()))
 
