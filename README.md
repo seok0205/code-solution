@@ -22,6 +22,7 @@
 |25.02.14|[D3 그래프 경로](./sw_expert_academy/25.02/14_D3_16506.py)|SWEA||
 |25.02.14|[D3 종이붙이기](./sw_expert_academy/25.02/14_D3_16505.py)|SWEA|필요|
 |25.02.13|[D2 파스칼의 삼각형](./sw_expert_academy/25.02/13_D2_2005.py)|SWEA||
+|25.02.13|[D1 풍선팡 보너스 게임](./sw_expert_academy/25.02/13_D1_18575.py)|SWEA||
 |25.02.13|[D1 스위치 조작](./sw_expert_academy/25.02/13_D1_22375.py)|SWEA||
 |25.02.13|[D4 괄호 짝짓기](./sw_expert_academy/25.02/13_D4_1218.py)|SWEA||
 |25.02.13|[D3 비밀번호](./sw_expert_academy/25.02/13_D3_1234.py)|SWEA||
