@@ -9,6 +9,7 @@
 
 |날짜|문제|플랫폼|복습|
 |---|---|---|---|
+|25.02.17|[D6 작업순서](./sw_expert_academy/25.02/17_D6_1267.py)|SWEA|필요|
 |25.02.17|[D4 계산기 1](./sw_expert_academy/25.02/17_D4_1222.py)|SWEA||
 |25.02.17|[D3 미로](./sw_expert_academy/25.02/17_D3_16532.py)|SWEA||
 |25.02.17|[D3 Forth](./sw_expert_academy/25.02/17_D3_16530.py)|SWEA||
