@@ -18,17 +18,28 @@ for tc in range(1, T+1):
     print(edge_lst)
     print(preceding_lst)
     
-    def findWay(s, e=V):
-        visited = [0] * (e+1)
+    visited = [0] * (V+1)
+
+    def findStart(lst):
+        for i in range(1, len(lst)):
+            if len(lst[i]) == 0:
+                start = i
+                break
+        return start
+    
+    def findWay(s, e=V, visited=visited):
+        result = []
         stack = []
+        stack.append(s)
         
         while True:
-            stack.append(s)
             if len(preceding_lst[s]) == 0 and visited[s] == 0:
                 visited[s] = 1
+                result.append(s)
                 
             for w in edge_lst[s]:
                 if len(preceding_lst[w]) == 0 and visited[w] == 0:
+                    stack.append(w)
                     s = w
                     break
             else:
@@ -36,10 +47,7 @@ for tc in range(1, T+1):
                     s = stack.pop()
                 else:
                     break
+
+        return result
     
-    start = 0
-    
-    for i in range(1, len(preceding_lst)):
-        if len(preceding_lst[i]) == 0:
-            start = i
-            break
+    print(findWay(4))
