@@ -21,6 +21,20 @@ def f(i, N):    # 크기가 N이고 순열을 저장한 p배열에서 p[i]를 �
             f(i+1, N)   # i+1자리 결정
             p[i], p[j] = p[j], p[i]
 
+          
+# def f(i, N, s):
+#     global min_v
+#     if i == N:
+#         if min_v > s :
+#             min_v = s
+#         elif min_v < s:
+#             return
+#     else:
+#         for j in range(i, N):
+#             p[i], p[j] = p[j], p[i]
+#             f(i+1, N, s + matrix[j][p[j]])   # i+1자리 결정
+#             p[i], p[j] = p[j], p[i]
+
 
 T = int(input())
 
