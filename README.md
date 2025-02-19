@@ -9,6 +9,7 @@
 
 |날짜|문제|플랫폼|복습|
 |---|---|---|---|
+|25.02.19|[D3 1차원 정원](./sw_expert_academy/25.02/19_D3_14178.py)|SWEA||
 |25.02.19|[D4 암호생성기](./sw_expert_academy/25.02/19_D4_1225.py)|SWEA||
 |25.02.19|[D3 피자굽기](./sw_expert_academy/25.02/19_D3_16639.py)|SWEA|필요|
 |25.02.19|[D3 회전](./sw_expert_academy/25.02/19_D3_16638.py)|SWEA||
@@ -22,7 +23,7 @@
 |25.02.16|[S4 스위치 켜고 끄기](./sw_expert_academy/25.02/16_S4_1244.py)|백준||
 |25.02.15|[D5 공통조상](./sw_expert_academy/25.02/15_D5_1248.py)|SWEA|필요|
 |25.02.15|[D4 보급로](./sw_expert_academy/25.02/15_D4_1249.py)|SWEA|필요|
-|25.02.14|[D3 퍼펙트 셔플](./sw_expert_academy/25.02/14_D3_3499.py)|SWEA||
+|25.02.14|[D3 퍼펙트 셔플](./sw_expert_academy/25.02/14_D3_3499.py)|SWEA|2회|
 |25.02.14|[D2 두 개의 숫자열](./sw_expert_academy/25.02/14_D2_1959.py)|SWEA||
 |25.02.14|[D4 길찾기](./sw_expert_academy/25.02/14_D4_1219.py)|SWEA||
 |25.02.14|[D3 그래프 경로](./sw_expert_academy/25.02/14_D3_16506.py)|SWEA||
