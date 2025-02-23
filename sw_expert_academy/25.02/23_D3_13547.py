@@ -8,9 +8,6 @@ S[i]가 o면 소정이가 승, x면 패배
 승리할 수 있으면 'YES', 아니면 'NO'출력
 '''
 
-import sys
-sys.stdin = open('tc.txt', 'r')
-
 T = int(input())
 
 for tc in range(1, T+1):
