@@ -9,6 +9,7 @@
 
 |날짜|문제|플랫폼|복습|
 |---|---|---|---|
+|25.03.05|[D4 중위 순회](./sw_expert_academy/25.03/0305_D4_1231.py)|SWEA||
 |25.03.05|[D3 subtree](./sw_expert_academy/25.03/0305_D3_16691.py)|SWEA||
 |25.03.04|[D3 이진탐색](./sw_expert_academy/25.03/0304_D3_16692.py)|SWEA||
 |25.03.03|[D3 신뢰](./sw_expert_academy/25.03/0303_D3_10761.py)|SWEA|필요|
