@@ -12,7 +12,7 @@ D3 16691 subtree
 '''
 
 
-def pre_order(T):
+def pre_order(T):       # 전위 순회 함수
     global cnt
     
     if T:
@@ -29,9 +29,9 @@ for tc in range(1, T+1):
     
     left_lst = [0] * (E+2)
     right_lst = [0] * (E+2)
-    cnt = 0
+    cnt = 0                 # 서브 트리 방문 수 = 방문을 다하면 트리 크기와 같다
     
-    for i in range(E):
+    for i in range(E):      # 받은 입력 정보를 각각 자식 노드 리스트에 반영해줌
         x = edge[2*i]
         y = edge[2*i+1]
         if left_lst[x] == 0:
@@ -39,6 +39,6 @@ for tc in range(1, T+1):
         else:
             right_lst[x] = y
         
-    pre_order(N)
+    pre_order(N)        # 전위 순회하여 cnt값 알아내기
     
     print(f'#{tc} {cnt}')
