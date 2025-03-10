@@ -10,21 +10,22 @@ D4 4408 자기 방으로 돌아가기
 각 사람들의 방 위치와 돌아가야 할 방 위치 목록이 주어질 때, 최소 몇 단위 시간만에 모든 학생이 이동할 수 있는지 구하는 문제
 '''
 
-import sys
-sys.stdin = open('tc.txt', 'r')
+# import sys
+# sys.stdin = open('tc.txt', 'r')
 
 T = int(input())
 
 for tc in range(1, T+1):
     N = int(input())
-    cur_room = [0] * 401
+    move = [0] * 200        # 방은 400개지만, 두방이 마주보고 있기때문에 경로는 200칸이나 다름없음.
     
     for _ in range(N):
-        a, b = map(int, input().split())
+        a, b = map(int, input().split())        # 방 입력 받음
         
-        cur_room[a] = (b)
-
-    for i in range(len(cur_room)):
-        if cur_room[i]:
-            location = i
-            
+        if a > b:               # 만약 a에서 받은 방이 b보다 더크면 바꿔줌
+            a, b = b, a
+        
+        for i in range((a-1)//2, (b-1)//2+1):       # 해당 이동 경로에 전부 1을 더해줌
+            move[i] += 1
+        
+    print(f'#{tc} {max(move)}')     # 모든 a,b 값을 N번 받은 다음 최종 지나간 경로의 max 값이 최단 시간 값임
