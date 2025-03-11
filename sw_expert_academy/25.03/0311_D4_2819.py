@@ -35,9 +35,9 @@ for tc in range(1, T+1):
                 for i in range(4):
                     x = target[0] + di[i]
                     y = target[1] + dj[i]
-                    if 0 <= x < 4 and 0 <= y < 4 and visit[x][y] == 0:
+                    if 0 <= x < 4 and 0 <= y < 4 and visit[x][y] < 3:
                         stack.append((x, y))
-                        visit[x][y] = 1
+                        visit[x][y] += 1
                         break
                 else:
                     target = stack.pop()
