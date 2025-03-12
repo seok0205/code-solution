@@ -33,7 +33,7 @@ def make_hamburger(idx, cur_score, kcal):
         make_hamburger(i, score, kcal + k_lst[i])       # 재귀 호출, 점수와 칼로리 갱신한 상태로
         used[i] = False             # 재귀 호출 끝나면 안 쓴상태로 복귀
     
-
+    
 T = int(input())
 
 for tc in range(1, T+1):
@@ -52,3 +52,43 @@ for tc in range(1, T+1):
     make_hamburger(0, 0, 0)
     
     print(f'#{tc} {max_score}')
+    
+    
+'''
+def make_hamburger(idx, cur_score, cur_kcal):
+    global max_score
+    
+    if L >= cur_kcal:
+        if cur_score > max_score:
+            max_score = cur_score
+    else:
+        return
+    
+    if idx == N:
+        return
+    
+    score = t_lst[idx]
+    kcal = k_lst[idx]
+    
+    make_hamburger(idx + 1, cur_score + score, cur_kcal + kcal)
+    make_hamburger(idx + 1, cur_score, cur_kcal)
+    
+
+T = int(input())
+
+for tc in range(1, T+1):
+    N, L = map(int, input().split())
+    
+    t_lst = []
+    k_lst = []
+    max_score = 0
+    
+    for _ in range(N):
+        T, K = map(int, input().split())
+        t_lst.append(T)
+        k_lst.append(K)
+    
+    make_hamburger(0, 0, 0)
+    
+    print(f'#{tc} {max_score}')
+'''
