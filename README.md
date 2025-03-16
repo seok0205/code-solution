@@ -9,6 +9,7 @@
 
 |날짜|문제|플랫폼|복습|
 |---|---|---|---|
+|25.03.16|[D3 교환학생](./sw_expert_academy/25.03/0316_D3_13038.py)|SWEA|필요|
 |25.03.15|[D4 Ladder2](./sw_expert_academy/25.03/0315_D4_1211.py)|SWEA||
 |25.03.15|[D3 힙](./sw_expert_academy/25.03/0315_D3_2930.py)|SWEA||
 |25.03.14|[모의 SW 역량테스트 디저트 카페](./sw_expert_academy/25.03/0314_2105.py)|SWEA||
