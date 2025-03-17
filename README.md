@@ -9,8 +9,9 @@
 
 |날짜|문제|플랫폼|복습|
 |---|---|---|---|
+|25.03.17|[D3 병합 정렬](./sw_expert_academy/25.03/0317_D3_16944.py)|SWEA|필요|
 |25.03.17|[D3 이진 탐색](./sw_expert_academy/25.03/0317_D3_16943.py)|SWEA||
-|25.03.17|[D3 퀵 정렬](./sw_expert_academy/25.03/0317_D3_16942.py)|SWEA||
+|25.03.17|[D3 퀵 정렬](./sw_expert_academy/25.03/0317_D3_16942.py)|SWEA|필요|
 |25.03.16|[D4 크고 작은 이진수의 곱셈](./sw_expert_academy/25.03/0316_D3_15761.py)|SWEA||
 |25.03.16|[D3 교환학생](./sw_expert_academy/25.03/0316_D3_13038.py)|SWEA|필요|
 |25.03.15|[D4 Ladder2](./sw_expert_academy/25.03/0315_D4_1211.py)|SWEA||
