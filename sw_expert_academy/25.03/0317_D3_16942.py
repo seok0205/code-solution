@@ -24,7 +24,6 @@ def partition(left, right):         # pivot 정하고, 퀵 정렬 과정 중 1�
             lst[i], lst[j] = lst[j], lst[i]
     
     lst[left], lst[j] = lst[j], lst[left]       # j는 처음 mid의 값일 것이고, lst[left]는 맨 처음 값(현재 pivot자리) 이므로 pivot값을 원래 있던 위치인 중간으로 맞바꾸어줌
-    print(lst)
     return j
 
 
