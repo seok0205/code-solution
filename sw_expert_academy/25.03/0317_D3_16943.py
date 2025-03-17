@@ -13,24 +13,28 @@ D3 16943 이진 탐색
 m에 찾는 원소가 있는 경우 방향 따지지 않음. M개의 정수 중 조건을 만족하는 정수의 개수를 알아내는 문제
 '''
 
-import sys
-sys.stdin = open('tc.txt', 'r')
+# import sys
+# sys.stdin = open('tc.txt', 'r')
 
 
-def binary_search(left, right):
-    global result
+def binary_search(left, right, target):
+    global x
     
-    mid = n_lst[(left+right)//2]
-    
-    if mid in m_lst:
-        m_lst.remove(mid)
-        result += 1
-    
-    if left >= right:
+    if left > right:    # 왼쪽 끝이 오른쪽 끝 역전하면 종료
         return
     
-    binary_search(left, (left+right)//2-1)
-    binary_search((left+right)//2+1, right)
+    mid = n_lst[(left+right)//2]        # 중간값
+    
+    if mid == target:       # 찾던 값과 같으면 x 에 대입
+        x = mid
+        return
+    
+    if target < mid:        # 만약 찾던 값보다 중간값이 크면 왼쪽, 아니면 오른쪽 탐색
+        search.append(1)
+        binary_search(left, (left+right)//2-1, target)
+    else:
+        search.append(0)
+        binary_search((left+right)//2+1, right, target)
 
 
 T = int(input())
@@ -39,9 +43,22 @@ for tc in range(1, T+1):
     N, M = map(int, input().split())
     n_lst = list(map(int, input().split()))
     m_lst = list(map(int, input().split()))
+    n_lst.sort()
     
     result = 0
     
-    binary_search(0, N-1)
+    
+    for i in m_lst:
+        search = []     # 번갈아서 탐색하는지 확인
+        x = 0
+        
+        binary_search(0, N-1, i)
+        
+        if x == i:      # 탐색해서 값을 찾았다면 번갈아서 탐색했는지 확인
+            for i in range(len(search)-1):      # 0아니면 1이라서 다음 값과 같으면 break
+                if search[i] == search[i+1]:
+                    break
+            else:       # for문 break없이 수행했다면 조건 만족, result 1 증가
+                result += 1
     
     print(f'#{tc} {result}')
