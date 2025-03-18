@@ -11,8 +11,8 @@ D4 1233 사칙연산 유효성 검사
 계산 가능하면 1, 불가능 시 0 출력, 0으로 나누는 경우 고려 X
 '''
 
-import sys
-sys.stdin = open('tc.txt', 'r')
+# import sys
+# sys.stdin = open('tc.txt', 'r')
 
 
 def cal(idx):
