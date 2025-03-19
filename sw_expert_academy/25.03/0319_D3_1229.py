@@ -14,8 +14,8 @@ D3 1229 암호문2
 네줄 - 명령어
 '''
 
-import sys
-sys.stdin = open('tc.txt', 'r')
+# import sys
+# sys.stdin = open('tc.txt', 'r')
 
 for tc in range(1, 11):
     N = int(input())
@@ -23,8 +23,25 @@ for tc in range(1, 11):
     c_num = int(input())
     command = list(map(str, input().split()))
     
-    for i in range(len(command)-2):
-        if command[i] == 'I':
-            pass
-        elif command[i] == 'D':
-            pass
+    cnt = 0     # 명령 개수 세기
+    idx = 0     # command 읽어갈 인덱스
+    while True:
+        if cnt == c_num:        # 존재하는 명령 모두 수행했으면 while문 중단
+            break
+        
+        if command[idx] == 'I':         # I 명령
+            cnt += 1                    # 수행했으니 명령 개수 1 증가
+            x = int(command[idx+1])     # code(암호문)에 x자리부터 y개의 숫자를 넣을 것
+            y = int(command[idx+2])
+            for i in range(y):
+                code.insert(x+i, command[idx+3+i])
+        elif command[idx] == 'D':       # D 명령
+            cnt += 1
+            x = int(command[idx+1])     # code(암호문)에 x자리부터 y개의 숫자를 삭제할 것
+            y = int(command[idx+2])
+            for i in range(y):
+                code.pop(x)
+        
+        idx += 1            # 한자리씩 탐색(I와 ,D를 발견하면 명령 시작함)
+        
+    print(f'#{tc} {" ".join(map(str, code[:10]))}')
