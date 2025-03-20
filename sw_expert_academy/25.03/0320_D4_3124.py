@@ -6,31 +6,31 @@ D4 3124 최소 스패닝 트리
 입력으로 주어지는 그래프는 하나의 연결 그래프임이 보장
 '''
 
-import sys
-sys.stdin = open('tc.txt', 'r')
+# import sys
+# sys.stdin = open('tc.txt', 'r')
 
 import heapq
 
 
-def prim(s):
+def prim(s):            # 프림 알고리즘 활용
     q = [(0, s)]
     visit = [0] * (V+1)
     min_w = 0
     
     while q:
-        w, n = heapq.heappop(q)
+        w, n = heapq.heappop(q)     # 최소힙에서 최상단 정보 꺼냄
         
-        if visit[n]:
+        if visit[n]:        # 이미 방문한 곳이면 다음 정보
             continue
         
-        visit[n] = 1
-        min_w += w
+        visit[n] = 1        # 방문했음
+        min_w += w          # 꺼낸 정보에선 최단 거리 가진 노드가 나오기 때문에 최솟값에 더해줌
         
-        for next_w, next_n in graph[n]:
-            if visit[next_n]:
+        for next_w, next_n in graph[n]:     # 간선 정보 리스트에서 다음 가중치, 다음 노드 위치 탐색
+            if visit[next_n]:               # 만약 방문한 곳들이면 다음 정보 탐색
                 continue
             
-            heapq.heappush(q, (next_w, next_n))
+            heapq.heappush(q, (next_w, next_n))     # 한번도 방문 안한 곳이면 최소힙에 푸시
     
     return min_w
 
@@ -39,9 +39,9 @@ T = int(input())
 
 for tc in range(1, T+1):
     V, E = map(int, input().split())
-    graph = [[] for _ in range(V+1)]
+    graph = [[] for _ in range(V+1)]        # 간선 정보 저장 리스트
     
-    for _ in range(E):
+    for _ in range(E):                      # 간선 수만큼 정보를 저장해줌
         a, b, c = map(int, input().split())
         graph[a].append((c, b))
         graph[b].append((c, a))
