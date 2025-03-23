@@ -6,8 +6,8 @@ G4 1197 최소 스패닝 트리
 입력으로 주어지는 그래프는 하나의 연결 그래프임이 보장
 '''
 
-import sys
-sys.stdin = open('tc.txt', 'r')
+# import sys
+# sys.stdin = open('tc.txt', 'r')
 
 import heapq
 
