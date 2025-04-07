@@ -32,23 +32,67 @@ N개의 줄에 지도에 쓰인 수가 북쪽부터 남쪽으로, 각 줄은 서
 이동시 마다 주사위의 윗 면에 쓰인 수를 출력. 바깥이동 명령은 무시, 출력 X.
 '''
 
-import sys
-sys.stdin = open('tc.txt', 'r')
+# import sys
+# sys.stdin = open('tc.txt', 'r')
+
+
+def east(x, y):     # 동쪽 굴렸을 때 주사위 변동, func는 지도와의 상호작용.
+    a, b, c, d = dice[0], dice[2], dice[3], dice[4]
+    dice[0], dice[2], dice[3], dice[4] = d, a, b, c
+    func(x, y)
+    
+
+def west(x, y):     # 서쪽
+    a, b, c, d = dice[0], dice[2], dice[3], dice[4]
+    dice[0], dice[2], dice[3], dice[4] = b, c, d, a
+    func(x, y)
+
+
+def north(x, y):    # 북쪽
+    a, b, c, d = dice[0], dice[1], dice[3], dice[5]
+    dice[0], dice[1], dice[3], dice[5] = b, c, d, a
+    func(x, y)
+
+
+def south(x, y):    # 남쪽
+    a, b, c, d = dice[0], dice[1], dice[3], dice[5]
+    dice[0], dice[1], dice[3], dice[5] = d, a, b, c
+    func(x, y)
+
+
+def func(x, y):     # 주사위가 도착한 지도상의 값이 0이면 맵에 주사위 바닥의 값 복사
+    if dice_map[x][y] == 0:
+        dice_map[x][y] = dice[0]
+    else:           # 지도에 값이 있으면 주사위 바닥에 지도의 값을 복사하고, 지도의 값이 0으로 변환
+        dice[0] = dice_map[x][y]
+        dice_map[x][y] = 0
+
 
 N, M, x, y, K = map(int, input().split())
 dice_map = [list(map(int, input().split())) for _ in range(N)]
 command = list(map(int, input().split()))
 
-dice = {'1': 0, '2': 0, '3': 0, '4': 0, '5': 0, '6': 0}
-dice_directions = {
-    '1': (0, '4', '3', '2', '5'),
-    '2': (0, '4', '3', '6', '1'),
-    '3': (0, '1', )
-    }
-
-di = [0, 0, 0, -1, 1]
+di = [0, 0, 0, -1, 1]       # 델타
 dj = [0, 1, -1, 0, 0]
 
-for i in command:
-    x += di[i]
+dice = [0, 0, 0, 0, 0, 0]       # 주사위 처음에는 모든 면이 0
+
+for i in command:       # 명령 차례로 이행
+    x += di[i]          # 좌표가 방향에 따라 바뀜
     y += dj[i]
+
+    if x < 0 or x >= N or y < 0 or y >= M:      # 지도 밖으로 나가면 좌표이동 취소 후, 다음 명령 이행
+        x -= di[i]
+        y -= dj[i]
+        continue
+    
+    if i == 1:      # 명령에 따른 방향으로 굴리기!
+        east(x, y)
+    elif i == 2:
+        west(x, y)
+    elif i == 3:
+        north(x, y)
+    elif i == 4:
+        south(x, y)
+        
+    print(dice[3])      # dice list의 인덱스 3의 값이 주사위의 윗면
