@@ -4,6 +4,7 @@
 
 (심화 1 ~ 기하 및 앞으로의 풀이들)  
 [백준 단계별 문제 풀이](https://linkinpark0205.tistory.com/)
+[백준 solved.ac CLASS1 문제 풀이](./baekjoon/CLASS1/)
 
 ## 25.04
 |날짜|문제|플랫폼|복습|
