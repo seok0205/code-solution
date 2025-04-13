@@ -28,8 +28,8 @@ S1 2527 직사각형
 두 직사각형의 공통부분 조사해서 해당 코드 문자를 출력파일의 첫 4줄에 각각 차례로 출력.
 '''
 
-import sys
-sys.stdin = open('tc.txt', 'r')
+# import sys
+# sys.stdin = open('tc.txt', 'r')
 
 for _ in range(4):
     # 첫번째 직사각형, 두번째 직사각형 좌표 얻기
