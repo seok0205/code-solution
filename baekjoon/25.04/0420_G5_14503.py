@@ -28,40 +28,37 @@ N개의 줄동안 방의 상태 주어짐. 0은 청소되지 않은 빈칸, 1은
 로봇 청소기가 있는 칸은 항상 빈 칸
 '''
 
-import sys
-sys.stdin = open('tc.txt')
+# import sys
+# sys.stdin = open('tc.txt')
 
-di = [-1, 0, 1, 0]
-dj = [0, -1, 0, 1]
+di = [-1, 0, 1, 0]      # 델타
+dj = [0, 1, 0, -1]
 
 def dfs(r, c, d):
-    stack = list()
-    stack.append((r, c, d))
-    visit[r][c] = 1
+    global result
 
-    x, y, direction = r, c, d
+    x, y, direction = r, c, d       # 첫 좌표, 방향
 
-    while stack:
-        for k in range(4):
-            nx = x + di[k]
-            ny = y + dj[k]
+    while True:
+        if visit[x][y] == 0:        # 청소 안했으면 청소함
+            visit[x][y] = 1
+            result += 1
+        
+        for _ in range(4):
+            direction = (direction-1)%4     # 방향은 저장해놓고, 계속 돌림.
+            nx = x + di[direction]          # 좌표 옮겨보기
+            ny = y + dj[direction]
 
-            if nx < 0 or nx >= N or ny < 0 or ny >= M:
+            if visit[nx][ny] or room[nx][ny]:       # 만약 방문했고, 벽이면 다음 방향 탐색
                 continue
-
-            if visit[nx][ny] or room[nx][ny]:
-                continue
-
-            visit[nx][ny] = 1
-            stack.append((nx, ny, (direction + k)%4))
-            break
-        else:
-            x, y, direction = stack.pop()
             
-            back_x, back_y = x + di[direction+2], y + dj[direction+2]
-
-            if room[back_x][back_y] == 1:
-                break
+            x, y = nx, ny       # 방문해야할곳이면 좌표 변경
+            break
+        else:   # 주위 4방향이 모두 방문 불가라면 돌아가야함
+            x, y = x - di[direction], y - dj[direction]     # 바라보던 방향의 뒤로 가기
+            if room[x][y]:      # 만약 뒤가 벽이면 작동 중지 후 결과 출력
+                print(result)
+                return
 
 
 N, M = map(int, input().split())
@@ -72,5 +69,3 @@ visit = [[0] * M for _ in range(N)]
 result = 0
 
 dfs(r, c, d)
-
-print(result)
