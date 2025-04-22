@@ -19,27 +19,29 @@ H, W, N : 호텔의 층 수, 각 층의 방 수, 몇번째 손님인지.
 N번째 손님에게 배정되어야 하는 방 번호 출력
 '''
 
-import sys
-sys.stdin = open('tc.txt', 'r')
+# import sys
+# sys.stdin = open('tc.txt', 'r')
 
 T = int(input())
 
 for _ in range(T):
     H, W, N = map(int, input().split())
 
-    cnt = 0
-    result = 0
+    floor = 1       # 1층 시작
+    if N%H == 0:        # 딱 맞아떨어지면 최고 층수에 배정
+        floor = H
+    else:               # 딱맞아떨어지는 것 아니면 나머지가 호수임.
+        floor = N % H
 
-    for i in range(1, W):
-        for j in range(H, 0, -1):
-            cnt += 1
-            if cnt == N:
-                if i < 10:
-                    result = str(H-j+1) + '0' + str(i)
-                else:
-                    result = str(H-j+1) + str(i)
-                break
-        if result:
-            break
+    room = 1            # 1번방으로 시작
+    if N%H == 0 and N//H == 1:      # 딱 맞아 떨어지는데 몫이 1이면 1층임
+        room = 1
+    elif N%H == 0:          # 그냥 딱 맞아 떨어 진다면 그때부터 호수 증가
+        room = N//H
+    else:                   # 나머지 경우의 수는 몫에 1더해줘야 함
+        room = N//H + 1
 
-    print(result)
+    if room >= 10:      # 방이 10번방을 넘어가면(2자리수로 넘어가면)
+        print(str(floor)+str(room))
+    else:               # 한자리수면 앞에 0붙여줌
+        print(str(floor)+'0'+str(room))
