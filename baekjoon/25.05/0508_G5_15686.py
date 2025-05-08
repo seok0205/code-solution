@@ -17,31 +17,53 @@ N개의 줄에 도시 정보주어짐
 치킨집의 개수는 M보다 크거나 같고, 13보다 작거나 같음
 '''
 
-import sys
-sys.stdin = open('tc.txt', 'r')
+# import sys
+# sys.stdin = open('tc.txt', 'r')
 
 
-def get_chicken_house():
+def get_chicken_house():        # 치킨집과 집들 좌표 구하기
     for i in range(N):
         for j in range(N):
             if city[i][j] == 2:
-                chicken_house.append((i, j))
+                chicken.append((i, j))
+            elif city[i][j] == 1:
+                house.append((i, j))
 
 
-def get_chicken_road(location, cnt, length):
+def get_chicken_road(idx, cnt, visit):
     global result
 
-    if cnt == M:
-        result = min(result, length)
+    new_visit = visit.copy()
+
+    if cnt == M:                    # 3개 치킨집 고르면 각자 집들의 치킨거리 구해서 총 합 구하기
+        length = 0
+        for i in house:             # 집마다 각각의 치킨거리 구해야함
+            sub = INF
+            for k in range(len(new_visit)):     # 선택한 M개의 치킨집과의 거리 구하고 최솟값이 치킨거리
+                if new_visit[k]:
+                    sub = min(sub, abs(chicken[k][0]-i[0])+abs(chicken[k][1]-i[1]))     # x좌표끼리 뺀 절댓값, y좌표끼리 뺀 절댓값 합친 게 치킨 거리 공식
+            length += sub       # 도시의 치킨거리는 모든 집의 치킨 거리 합해야함
+
+        result = min(result, length)        # 도시의 치킨 거리가 최솟값인지 비교
         return
     else:
-        pass
+        for i in range(idx, len(chicken)):
+            if new_visit[i] != 1:
+                new_visit[i] = 1
+                get_chicken_road(i + 1, cnt + 1, new_visit)     # dfs 형식으로 모든 조합 탐색
+                new_visit[i] = 0
 
 
 N, M = map(int, input().split())
 city = [list(map(int, input().split())) for _ in range(N)]
-result = float('inf')
-chicken_house = list()
+INF = 1000000               # 주어진 범위내에선 나올 수 없는 수
+result = INF
+chicken = list()
+house = list()
 
 get_chicken_house()
-get_chicken_road(0, 0)
+
+visit = [0] * len(chicken)
+get_chicken_road(0, 0, visit)
+
+print(result)
