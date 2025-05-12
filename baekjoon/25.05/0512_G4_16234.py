@@ -20,40 +20,49 @@ N개의 줄에 각 나라 인구수. r행 c열에 주어지는 정수는 A[r][c]
 인구 이동이 발생하는 일수가 2,000번 보다 작거나 같은 입력만 주어짐.
 '''
 
-import sys
-sys.stdin = open('tc.txt', 'r')
+# import sys
+# sys.stdin = open('tc.txt', 'r')
+
 from collections import deque
 
-dir_dic = {0: (0, 1), 1: (1, 0), 2: (0, -1), 3: (-1, 0)}
+dir_dic = {0: (0, 1), 1: (1, 0), 2: (0, -1), 3: (-1, 0)}        # 방향
 
 
-def check(x, y):
+def check(x, y):                    # 국경 열 수 있는지 확인 후 인구이동까지하는 함수
     q = deque([(x, y)])
+    population = worlds[x][y]       # 연합한 국가들의 총인구 담을 변수
+    nations = [(x, y)]              # 연합 국가들 좌표
     visit[x][y] = 1
-    population = worlds[x][y]
 
-    while q:
-        x, y = q.popleft()
+    while q:                    # bfs 활용 탐색
+        a, b = q.popleft()
 
         for k in range(4):
-            nx = x + dir_dic[k][0]
-            ny = y + dir_dic[k][1]
+            nx = a + dir_dic[k][0]
+            ny = b + dir_dic[k][1]
 
-            if nx < 0 or nx >= N or ny < 0 or ny >= N:
+            if nx < 0 or nx >= N or ny < 0 or ny >= N:      # 범위 이탈 방지
                 continue
 
-            if visit[nx][ny]:
+            if visit[nx][ny]:           # 연합한 국가면 제낌
                 continue
 
-            differ = abs(worlds[x][y] - worlds[nx][ny])
-            if differ < L and differ > R:
+            differ = abs(worlds[a][b] - worlds[nx][ny])
+            if differ < L or differ > R:            # 주변 국가와 인구차이 확인
                 continue
 
-            visit[nx][ny] = 1
-            population += worlds[nx][ny]
-            q.append((nx, ny))
+            visit[nx][ny] = 1           # 조건 모두 통과하면 연합.
+            nations.append((nx, ny))    # 연합 국가 좌표에 추가
+            population += worlds[nx][ny]    # 인구 총합에 추가
+            q.append((nx, ny))          # 인큐
     
-    return population
+    if population != worlds[x][y]:      # 첫 인구와 차이가 없다면 국가와 아예 연합하지 않았다는 것.
+        population = population // len(nations)     # 인구 구하는 공식
+
+        for i, j in nations:            # 연합 국가의 인구 조정
+            worlds[i][j] = population
+        return True     # 연합한 국가 있으면 True 반환
+    return False        # 연합한 국가 없으면 False 반환
 
 
 N, L, R = map(int, input().split())
@@ -63,15 +72,17 @@ result = 0
 
 while True:
     visit = [[0] * N for _ in range(N)]
-    sub = 0
+    move = False
 
-    for i in range(N):
+    for i in range(N):              # 국가들 탐색하면서
         for j in range(N):
-            if visit[i][j] != 1:
-                population = check(i, j)
-                sub += 1
+            if visit[i][j] != 1:    # 연합하지 않은 국가가 있으면 그 곳을 중심으로 연합이 이루어지는지 확인
+                if check(i, j):     # 확인 후 False, True 반환받기
+                    move = True
 
-    if sub == 0:
+    if not move:        # Ture 반환 받지 못하면 연합 못했단 뜻이므로 반복문 종료
         break
 
-print(population)
+    result += 1         # True 반환 받았다면 인구이동 일어났다는 뜻. result 1 증가.
+
+print(result)
