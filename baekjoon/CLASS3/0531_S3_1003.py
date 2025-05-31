@@ -20,15 +20,15 @@ f(3)은 f(2)와 f(1)의 결과 얻고, 2 리턴
 # import sys
 # sys.stdin = open('tc.txt', 'r')
 
-def fibonacci(num):
-    if num == 0:
+def fibonacci(num):     # 피보나치 함수는 규칙이 있음. 2일때부터
+    if num == 0:        # num0은 이전 num1의 값이고, num1은 이전 num1에 이전 num0을 더한 값임
         return 1, 0
     elif num == 1:
         return 0, 1
     
     num0, num1 = 0, 1
 
-    for i in range(num-1):
+    for i in range(num-1):  # 위에서 발견한 규칙을 식으로 표현
         new_num0 = num1
         new_num1 = num0 + num1
 
