@@ -39,20 +39,19 @@ N줄 동안 공간의 상태 주어짐. 0, 1, 2, 3, 4, 5, 6, 9로 이루어짐.
 
 import sys
 from collections import deque
-sys.stdin = open('tc.txt', 'r')
+# sys.stdin = open('tc.txt', 'r')
 input = sys.stdin.readline
 
-di = [-1, 0, 1, 0]      # 먹을 수 있는 물고기가 많을 땐, 위에있는게 우선, 위에 있는게 많으면 그 중 가장 왼쪽. 순서를 위 왼쪽으로 탐색 순서 정하면 조건 만족 가능.
+di = [-1, 0, 1, 0]
 dj = [0, -1, 0, 1]
 
 
 def bfs(start):      # 상어가 1회 이동하는 로직
-    global seconds
-
     q = deque()
     q.append((start[0], start[1]))
     visit = [[0] * N for _ in range(N)]
     visit[start[0]][start[1]] = 1
+    fish = []                       # 먹을수 있는 물고기 저장 리스트
 
     while q:
         x, y = q.popleft()      # 디큐
@@ -73,12 +72,10 @@ def bfs(start):      # 상어가 1회 이동하는 로직
             q.append((nx, ny))      # 인큐
 
             if space[nx][ny] != 0 and space[nx][ny] != 9 and space[nx][ny] < baby_shark:       # 만약 공간의 물고기보다 아기상어가 더 크면 먹음.
-                space[nx][ny] = 9           # 아기상어가 그자리로 이동
-                space[start[0]][start[1]] = 0       # 아기상어가 원래있던 자리는 비게됨
-                seconds += (visit[nx][ny] - 1)        # 이동한 시간 버틴 시간에 더해줌
-                return True, (nx, ny) # 함수 종료
+                fish.append((visit[nx][ny] - 1, nx, ny))            # (거리, 위치1, 위치2) 형태로 넣기
 
-    return False, (nx, ny)
+    fish.sort(key=lambda x: (x[0], x[1], x[2]))         # 람다식 활용하여 거리, 위쪽에 있는 것과 그중 가장 왼쪽의 것을 얻어야함.
+    return fish
 
 
 N = int(input())
@@ -93,14 +90,19 @@ for i in range(N):
             start = (i, j)
 
 while True:
-    tf, start = bfs(start)
-    if tf == False:
-        break
-    else:
-        cnt += 1
+    fish = bfs(start)
 
-    if cnt == baby_shark:
+    if not fish:                # 먹을 물고기 없으면 누적 시간 출력.
+        print(seconds)
+        break
+
+    time, x, y = fish[0]
+    cnt += 1                    # 물고기 섭취
+
+    if cnt == baby_shark:       # 상어 크기 증가 조건
         baby_shark += 1
         cnt = 0
 
-print(seconds)
+    space[x][y] = 0             # 물고기 먹었으니 해당 자리 물고기 삭제
+    start = (x, y)              # 상어출발 자리도 바꿔주기(다음 물고기 찾아야 함)
+    seconds += time             # 시간 누적
