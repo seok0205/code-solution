@@ -26,40 +26,78 @@ M개의 줄에 나무의 정보 x, y, z. 나무 위치, z는 나무 나이.
 '''
 
 import sys
-sys.stdin = open('tc.txt', 'r')
+from collections import defaultdict, deque
+# sys.stdin = open('tc.txt', 'r')
 input = sys.stdin.readline
 
 
-def spring():
-    pass
+def four_seasons():     # 한번 실행하면 1년 지남
+    death = defaultdict(int)
 
+    # 봄, 여름
+    for i, j in trees.items():
+        # 양분 먹는 나무, 죽는 나무 판별
+        alive = deque()
+        tree_list = deque(sorted(j))
+        
+        for k in tree_list:
+            if k <= real_field[i[0]][i[1]]:
+                real_field[i[0]][i[1]] -= k
+                alive.append(k + 1)
+            else:
+                death[i] += (k // 2)
+        
+        # 여름에 죽은 나무들이 양분으로 변함
+        trees[i] = alive
+        
+    # 죽은 나무 있는 땅에 양분 더해줌
+    for i, j in death.items():
+        real_field[i[0]][i[1]] += j
 
-def summer():
-    pass
+    # 가을
+    di = [0, 0, 1, -1, 1, -1, 1, -1]
+    dj = [1, -1, 0, 0, -1, 1, 1, -1]
 
+    add_tree = defaultdict(deque)
 
-def fall():
-    pass
+    for location, tree in trees.items():
+        for k in range(len(tree)):
+            if tree[k] % 5 == 0:        # 나무 나이가 5의 배수면 번식
+                for n in range(8):
+                    nx = location[0] + di[n]
+                    ny = location[1] + dj[n]
 
+                    if nx < 0 or nx >= N or ny < 0 or ny >= N:      # 범위 이탈 방지
+                        continue
 
-def winter():
-    pass
+                    add_tree[(nx, ny)].appendleft(1)        # 새로운 나무. 양분은 나이 적은게 먼저 먹으므로 앞으로 삽입
+
+    for i, j in add_tree.items():       # 새로 운나무를 trees 딕셔너리에 확장
+        trees[i].extendleft(j)
+
+    # 겨울(원래 땅에 있던 양분 만큼 더해줌)
+    for i in range(N):
+        for j in range(N):
+            real_field[i][j] += field[i][j]
 
 
 N, M, K = map(int, input().split())
 
 field = [list(map(int, input().split())) for _ in range(N)]
-trees = [[0] * N for _ in range(N)]
+real_field = [[5] * N for _ in range(N)]        # 처음 필드에는 5의 양분이 존재
+trees = defaultdict(deque)
 
-for _ in range(K):
-    spring()
-    summer()
-    fall()
-    winter()
+for _ in range(M):                          # 처음 나무 위치한 나무들 나타내는 딕셔너리
+    x, y, z = map(int, input().split())
+    trees[(x-1, y-1)].append(z)
+
+for _ in range(K):              # K년 동안 진행
+    four_seasons()
 
 result = 0
 
-for i in range(N):
-    result += sum(trees[i])
+for i in trees.values():        # 마지막 딕셔너리에 담긴 나무들의 개수 구하기
+    if i:
+        result += len(i)
 
 print(result)
