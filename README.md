@@ -3,13 +3,17 @@
 백준, 프로그래머스 및 SWEA 문제 풀이
 
 (심화 1 ~ 기하 및 앞으로의 풀이들)  
-[백준 단계별 문제 풀이](https://linkinpark0205.tistory.com/)
-[백준 solved.ac CLASS1 문제 풀이](./baekjoon/CLASS1/)
+[백준 단계별 문제 풀이](https://linkinpark0205.tistory.com/)  
+[백준 solved.ac CLASS1 문제 풀이](./baekjoon/CLASS1/)  
+[백준 solved.ac CLASS2 문제 풀이](./baekjoon/CLASS2/)  
+[백준 solved.ac CLASS3 문제 풀이](./baekjoon/CLASS3/)  
+[백준 solved.ac CLASS4 문제 풀이](./baekjoon/CLASS4/)  
 
 ## 26.01
 
 |날짜|문제|플랫폼|복습|
 |---|---|---|---|
+|26.01.08|[B2 Hashing](./baekjoon/CLASS2/260109_B2_15829.py)|백준||
 |26.01.08|[B2 분해합](./baekjoon/CLASS2/260108_B2_2231.py)|백준||
 
 ## 25.07
