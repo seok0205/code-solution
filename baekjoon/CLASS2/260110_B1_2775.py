@@ -17,7 +17,13 @@ for _ in range(T):
     k = int(input())
     n = int(input())
 
-    result = 0
+    apt = [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]]
 
-    for i in range(k):
-        pass
+    for i in range(1, k+1):
+        floor = [0, 1]
+        for j in range(2, n+1):
+            num = apt[i-1][j] + floor[-1]
+            floor.append(num)
+        apt.append(floor)
+
+    print(apt[k][n])
