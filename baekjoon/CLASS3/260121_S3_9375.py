@@ -16,7 +16,7 @@ tc마다 의상 입을 수 있는 경우의 수 출력.
 '''
 
 import sys
-sys.stdin = open('tc.txt', 'r')
+# sys.stdin = open('tc.txt', 'r')
 input = sys.stdin.readline
 print = sys.stdout.write
 
