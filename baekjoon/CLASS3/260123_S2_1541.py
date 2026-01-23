@@ -17,9 +17,23 @@ S2 1541 잃어버린 괄호
 '''
 
 import sys
-sys.stdin = open('tc.txt', 'r')
+# sys.stdin = open('tc.txt', 'r')
 input = sys.stdin.readline
 output = sys.stdout.write
 
-x = input()
+x = input().strip().split('-')
 
+if '+' in x[0]:
+    nums = map(int, x[0].split('+'))
+    result = sum(nums)
+else:
+    result = int(x[0])
+
+for i in x[1:]:
+    if '+' in i:
+        nums = map(int, i.split('+'))
+        result -= sum(nums)
+    else:
+        result -= int(i)
+
+output(str(result))
