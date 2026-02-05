@@ -14,8 +14,27 @@ numbers의 원소는 0 이상 1,000 이하
 정답이 너무 클 수 있으니 문자열로 바꾸어 return
 '''
 
+# x * 3 자릿수 채워서 비교
 def solution(numbers):
     numbers = list(map(str, numbers))
     numbers.sort(reverse=True, key=lambda x: x * 3)
+    answer = ''.join(numbers)
+    return str(int(answer))
+
+
+# cmp_to_key 활용해서 비교
+from functools import cmp_to_key
+
+def compare(a, b):
+    if a + b > b + a:
+        return -1
+    elif b + a > a + b:
+        return 1
+    else:
+        return 0
+
+def solution(numbers):
+    numbers = list(map(str, numbers))
+    numbers.sort(key=cmp_to_key(compare))
     answer = ''.join(numbers)
     return str(int(answer))
