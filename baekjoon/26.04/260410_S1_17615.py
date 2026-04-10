@@ -20,8 +20,30 @@ S1 17615 볼 모으기
 '''
 
 import sys
-sys.stdin = open('tc.txt', 'r')
+# sys.stdin = open('tc.txt', 'r')
 input = sys.stdin.readline
 
 N = int(input())
-balls = list(input().strip())
+balls = input().strip()
+
+is_red = balls.count('R')
+is_blue = balls.count('B')
+
+if is_red == 0 or is_blue == 0:
+    print(0)
+else:
+    result = []
+
+    is_red_left = balls.lstrip('R')
+    result.append(is_red_left.count('R'))
+
+    is_red_right = balls.rstrip('R')
+    result.append(is_red_right.count('R'))
+
+    is_blue_left = balls.lstrip('B')
+    result.append(is_blue_left.count('B'))
+
+    is_blue_right = balls.rstrip('B')
+    result.append(is_blue_right.count('B'))
+
+    print(min(result))
